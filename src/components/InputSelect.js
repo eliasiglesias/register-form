@@ -1,38 +1,9 @@
 import React from "react";
 
-const daysArray = [
-	1,
-	2,
-	3,
-	4,
-	5,
-	6,
-	7,
-	8,
-	9,
-	10,
-	11,
-	12,
-	13,
-	14,
-	15,
-	16,
-	17,
-	18,
-	19,
-	20,
-	21,
-	22,
-	23,
-	24,
-	25,
-	26,
-	27,
-	28,
-	29,
-	30,
-	31,
-];
+const daysArray = [];
+for (let i = 1; i < 32; i++) {
+	daysArray.push(<option value={i}>{i}</option>);
+}
 const monthArray = [
 	"Enero",
 	"Febrero",
@@ -49,61 +20,35 @@ const monthArray = [
 ];
 const yearArray = [];
 for (let i = 1950; i < 2021; i++) {
-	yearArray.push(i);
+	yearArray.push(<option value={i}>{i}</option>);
 }
 
 const InputSelect = (props) => {
-	if (props.errorControl) {
-		return (
-			<>
-				<div className="d-flex mt-2">
-					<select id="year" onChange={props.handleInputChange}>
-						<option></option>
-						{yearArray.map((value) => {
-							return <option value={value}>{value}</option>;
-						})}
-					</select>
-					<select id="month" onChange={props.handleInputChange}>
-						<option></option>
-						{monthArray.map((value) => {
-							return <option value={value}>{value}</option>;
-						})}
-					</select>
-					<select id="day" onChange={props.handleInputChange}>
-						<option></option>
-						{daysArray.map((value) => {
-							return <option value={value}>{value}</option>;
-						})}
-					</select>
-				</div>
-				<div>
-					<label className="text-danger">{props.errorMessage}</label>
-				</div>
-			</>
-		);
-	} else
-		return (
+	return (
+		<>
 			<div className="d-flex mt-2">
 				<select id="year" onChange={props.handleInputChange}>
-					<option></option>
-					{yearArray.map((value) => {
-						return <option value={value}>{value}</option>;
-					})}
+					<option>Año</option>
+					{yearArray}
 				</select>
 				<select id="month" onChange={props.handleInputChange}>
-					<option></option>
-					{monthArray.map((value) => {
-						return <option value={value}>{value}</option>;
+					<option>Mes</option>
+					{monthArray.map((value, index) => {
+						return <option value={index + 1}>{value}</option>;
 					})}
 				</select>
 				<select id="day" onChange={props.handleInputChange}>
-					<option></option>
-					{daysArray.map((value) => {
-						return <option value={value}>{value}</option>;
-					})}
+					<option>Dia</option>
+					{daysArray}
 				</select>
 			</div>
-		);
+			{props.errorControl && (
+				<div>
+					<label className="text-danger">{props.errorMessage}</label>
+				</div>
+			)}
+		</>
+	);
 };
 
 export { InputSelect };

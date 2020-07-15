@@ -4,6 +4,9 @@ import { Container, Col, Row } from "reactstrap";
 import { InputGroupComponent } from "./components/InputGroupComponent";
 import ButtonSignUp from "./components/ButtonSignUp";
 import { checkErrors } from "./aux-functions/checkErrors";
+import { checkTelephone } from "./aux-functions/checkTelephone";
+import { checkEmail } from "./aux-functions/checkEmail";
+import { checkDate } from "./aux-functions/checkDate";
 
 function App() {
 	const [inputName, setInputName] = useState("");
@@ -78,15 +81,15 @@ function App() {
 	}, [inputSurname]);
 
 	useEffect(() => {
-		if (inputEmail.length < 3) {
+		if (checkEmail(inputEmail)) {
 			setErrorControlEmail(true);
 		} else setErrorControlEmail(false);
 	}, [inputEmail]);
 
 	useEffect(() => {
-		if (inputTelephone.length < 3) {
-			setErrorControlTelephone(true);
-		} else setErrorControlTelephone(false);
+		if (checkTelephone(inputTelephone)) {
+			setErrorControlTelephone(false);
+		} else setErrorControlTelephone(true);
 	}, [inputTelephone]);
 
 	useEffect(() => {
@@ -96,9 +99,9 @@ function App() {
 	}, [inputGender]);
 
 	useEffect(() => {
-		if (Object.values(inputBirthDay).length < 3) {
-			setErrorControlBirthDay(true);
-		} else setErrorControlBirthDay(false);
+		if (checkDate(inputBirthDay)) {
+			setErrorControlBirthDay(false);
+		} else setErrorControlBirthDay(true);
 	}, [inputBirthDay]);
 
 	useEffect(() => {

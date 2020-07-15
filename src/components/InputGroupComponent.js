@@ -5,7 +5,9 @@ import { InputSelect } from "./InputSelect";
 import { InputCheckbox } from "./InputCheckbox";
 
 const errorMessage = "El texto introducido no tiene 3 caracteres";
-const errorBirthday = "La fecha no está completa";
+const errorTelephone = "Solo puede ser un número de al menos 3 caracteres";
+const errorEmail = "El email no está bien introducido";
+const errorBirthday = "La fecha no está bien introducida";
 
 const InputGroupComponent = (props) => {
 	return (
@@ -38,14 +40,14 @@ const InputGroupComponent = (props) => {
 					placeholder="email"
 					className="mt-2"
 					handleInputChange={props.handleInputChange}
-					errorMessage={errorMessage}
+					errorMessage={errorEmail}
 					errorControl={props.errorControlEmail}
 				/>
 				<InputText
 					placeholder="telefono"
 					className="mt-2"
 					handleInputChange={props.handleInputChange}
-					errorMessage={errorMessage}
+					errorMessage={errorTelephone}
 					errorControl={props.errorControlTelephone}
 				/>
 			</InputGroupText>
