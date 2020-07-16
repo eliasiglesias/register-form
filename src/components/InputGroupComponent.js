@@ -12,7 +12,7 @@ const errorBirthday = "La fecha no está bien introducida";
 const InputGroupComponent = (props) => {
 	return (
 		<InputGroup>
-			<InputGroupText className="d-flex flex-column">
+			<InputGroupText style={{ width: "370px" }} className="d-flex flex-column">
 				<InputText
 					placeholder="nombre"
 					className="mt-2"
